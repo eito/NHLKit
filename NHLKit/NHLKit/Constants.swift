@@ -8,6 +8,14 @@
 
 import Foundation
 
+// valid years
+/*
+20112012
+20122013
+20132014
+20142015
+*/
+
 
 // http://nhlwc.cdnak.neulion.com/fs1/nhl/league/teamroster/ANA/iphone/clubroster.json
 let RosterTemplateURLString = "http://nhlwc.cdnak.neulion.com/fs1/nhl/league/teamroster/%@/iphone/clubroster.json"

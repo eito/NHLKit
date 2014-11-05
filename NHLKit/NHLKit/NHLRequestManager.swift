@@ -7,11 +7,30 @@
 //
 
 import Foundation
+import NHLKit
 
 public class NHLRequestManager {
     
-    public class func fetchRoster(team: String, completion: ((roster: Roster?, error: NSError?) -> Void)?) -> Request? {
-        let requestURLString = String(format: RosterTemplateURLString, team)
+    public class func fetchStats(forRoster roster: Roster, completion: ((error: NSError?) -> Void)?) -> Request? {
+        let requestURLString = String(format: TeamPlayerStatsURLString, 2014, 2015)
+        if let URL = NSURL(string: requestURLString) {
+            var request = JSONRequest(URL: URL)
+            request.completion = { (result, error) in
+                
+                if let result = result as? [String:AnyObject] {
+                    roster.decodeStatJSON(result)
+                }
+
+                completion?(error: error)
+            }
+            request.start()
+            return request
+        }
+        return nil
+    }
+    
+    public class func fetchRoster(team: Team, completion: ((roster: Roster?, error: NSError?) -> Void)?) -> Request? {
+        let requestURLString = String(format: RosterTemplateURLString, team.abbreviation)
         if let URL = NSURL(string: requestURLString) {
             var request = JSONRequest(URL: URL)
             request.completion = { (result, error) in

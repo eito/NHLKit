@@ -24,6 +24,8 @@ public class Player: JSONCoding, DebugPrintable {
     public private(set) var number: Int?
     public private(set) var twitterURL: NSURL?
     public private(set) var twitterHandle: String?
+
+    public internal(set) var gamesPlayed: Int?
     
     // MARK: Methods
     
@@ -36,6 +38,24 @@ public class Player: JSONCoding, DebugPrintable {
         }
         display += "\(name)"
         return display
+    }
+    
+    public func decodeStatString(stats: String) {
+        
+    }
+    
+    public func fetchThumbnail(completion: ((image: UIImage?, error: NSError?) -> Void)?) -> ImageRequest? {
+        var ir = ImageRequest(URL: imageURL)
+        ir.completion = { (result, error) in
+            if let image = result as? UIImage {
+                completion?(image: image, error: nil)
+            } else {
+                println("error: \(error)")
+                completion?(image: nil, error: error)
+            }
+        }
+        ir.start()
+        return ir
     }
 
     // MARK: JSONCoding

@@ -35,11 +35,13 @@ class RosterViewContorller: UITableViewController {
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ROSTER")
         
-        NHLRequestManager.fetchRoster(team.abbreviation) { (roster, error) in
+        NHLRequestManager.fetchRoster(team) { (roster, error) in
             
             if let error = error {
                 println("error: \(error)")
             } else if let roster = roster {
+                println("roster: \(roster)")
+                println("roster: \(roster)")                
                 self.roster = roster
                 self.tableView.reloadData()
             }

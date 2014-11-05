@@ -10,7 +10,7 @@ import Foundation
 
 public class Roster: JSONCoding, DebugPrintable {
     
-    public var team: String?
+    public var team: Team?
     public private(set) var goalies: [Goalie]!
     public private(set) var defensemen: [Skater]!
     public private(set) var forwards: [Skater]!
@@ -18,6 +18,44 @@ public class Roster: JSONCoding, DebugPrintable {
     public var count: Int? {
         get {
             return goalies.count + defensemen.count + forwards.count
+        }
+    }
+    
+    public var skaters: [Skater]? {
+        return defensemen + forwards
+    }
+    
+    public func decodeStatJSON(JSON: [String:AnyObject]) {
+        var skaterStatsMap = [Int:String]()
+        if let skatersJSON = JSON["skaterData"] as? [[String:AnyObject]] {
+            for skaterJSON in skatersJSON {
+                if let i = skaterJSON["id"] as? Int {
+                    skaterStatsMap[i] = (skaterJSON["data"] as String)
+                }
+            }
+        }
+        
+        if let skaters = skaters {
+            for skater in skaters {
+                if let statString = skaterStatsMap[skater.playerID] {
+                    skater.decodeStatString(statString)
+                }
+            }
+        }
+
+        var goalieStatsMap = [Int:String]()
+        if let goaliesJSON = JSON["goalieData"] as? [[String:AnyObject]] {
+            for goalieJSON in goaliesJSON {
+                if let i = goalieJSON["id"] as? Int {
+                    goalieStatsMap[i] = (goalieJSON["data"] as String)
+                }
+            }
+        }
+        
+        for goalie in goalies {
+            if let statString = goalieStatsMap[goalie.playerID] {
+                goalie.decodeStatString(statString)
+            }
         }
     }
     
@@ -51,7 +89,7 @@ public class Roster: JSONCoding, DebugPrintable {
     
     public var debugDescription: String {
         get {
-            return "Team: \(team)\nGoalies: \(goalies)\nDefensemen: \(defensemen)\n Forwards: \(forwards)\n"
+            return "Team: \(team!.name)\nGoalies: \(goalies)\nDefensemen: \(defensemen)\n Forwards: \(forwards)\n\n\nSkaters: \(skaters)"
         }
     }
 }
