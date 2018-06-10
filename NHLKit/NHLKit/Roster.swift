@@ -30,7 +30,7 @@ public class Roster: JSONCoding, DebugPrintable {
         if let skatersJSON = JSON["skaterData"] as? [[String:AnyObject]] {
             for skaterJSON in skatersJSON {
                 if let i = skaterJSON["id"] as? Int {
-                    skaterStatsMap[i] = (skaterJSON["data"] as String)
+                    skaterStatsMap[i] = (skaterJSON["data"] as! String)
                 }
             }
         }
@@ -47,7 +47,7 @@ public class Roster: JSONCoding, DebugPrintable {
         if let goaliesJSON = JSON["goalieData"] as? [[String:AnyObject]] {
             for goalieJSON in goaliesJSON {
                 if let i = goalieJSON["id"] as? Int {
-                    goalieStatsMap[i] = (goalieJSON["data"] as String)
+                    goalieStatsMap[i] = (goalieJSON["data"] as! String)
                 }
             }
         }

@@ -61,19 +61,19 @@ public class Player: JSONCoding, DebugPrintable {
     // MARK: JSONCoding
     
     public required init(JSON: [String : AnyObject]) {
-        position = JSON["position"] as String
-        playerID = JSON["id"] as Int
-        weight = JSON["weight"] as Int
-        height = JSON["height"] as String
+        position = JSON["position"] as! String
+        playerID = JSON["id"] as! Int
+        weight = JSON["weight"] as! Int
+        height = JSON["height"] as! String
         
         if let url = JSON["imageUrl"] as? String {
             imageURL = NSURL(string: url)
         }
         
-        birthplace = JSON["birthplace"] as String
-        age = JSON["age"] as Int
-        name = JSON["name"] as String
-        birthdate = JSON["birthdate"] as String
+        birthplace = JSON["birthplace"] as! String
+        age = JSON["age"] as! Int
+        name = JSON["name"] as! String
+        birthdate = JSON["birthdate"] as! String
         number = JSON["number"] as? Int
         
         if let url = JSON["twitterURL"] as? String {

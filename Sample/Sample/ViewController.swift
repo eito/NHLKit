@@ -39,11 +39,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CONTENT", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("CONTENT", forIndexPath: indexPath) as! UITableViewCell
         
         let teamAbbrev = NHLTeams[indexPath.row]
         let team: Team! = NHLTeamMap[teamAbbrev]
-        cell.textLabel.text = team.name
+        cell.textLabel?.text = team.name
         cell.accessoryType = .DisclosureIndicator
         return cell
     }

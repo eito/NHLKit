@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E114CF01A09F70500D9AAB3 /* NHLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E114CEF1A09F70500D9AAB3 /* NHLKit.framework */; };
 		4E114D001A0A06A100D9AAB3 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114CFF1A0A06A100D9AAB3 /* RosterViewController.swift */; };
+		4E5A0BDA1A0B499A0074F467 /* NHLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E114CEF1A09F70500D9AAB3 /* NHLKit.framework */; };
+		4E5A0BDB1A0B499A0074F467 /* NHLKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E114CEF1A09F70500D9AAB3 /* NHLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E5A0BDE1A0B51B30074F467 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A0BDC1A0B51B30074F467 /* PlayerViewController.swift */; };
+		4E5A0BDF1A0B51B30074F467 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A0BDD1A0B51B30074F467 /* PlayerViewController.xib */; };
 		4EB721111A09F46900959133 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB721101A09F46900959133 /* AppDelegate.swift */; };
 		4EB721131A09F46900959133 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB721121A09F46900959133 /* ViewController.swift */; };
 		4EB721161A09F46900959133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB721141A09F46900959133 /* Main.storyboard */; };
@@ -23,6 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4E5A0BDB1A0B499A0074F467 /* NHLKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -30,8 +34,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E114CEF1A09F70500D9AAB3 /* NHLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NHLKit.framework; path = "../NHLKit/build/Debug-iphoneos/NHLKit.framework"; sourceTree = "<group>"; };
+		4E114CEF1A09F70500D9AAB3 /* NHLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NHLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E114CFF1A0A06A100D9AAB3 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
+		4E5A0BDC1A0B51B30074F467 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		4E5A0BDD1A0B51B30074F467 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		4EB7210B1A09F46900959133 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB7210F1A09F46900959133 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EB721101A09F46900959133 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E114CF01A09F70500D9AAB3 /* NHLKit.framework in Frameworks */,
+				4E5A0BDA1A0B499A0074F467 /* NHLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +81,8 @@
 			children = (
 				4EB721101A09F46900959133 /* AppDelegate.swift */,
 				4EB721121A09F46900959133 /* ViewController.swift */,
+				4E5A0BDC1A0B51B30074F467 /* PlayerViewController.swift */,
+				4E5A0BDD1A0B51B30074F467 /* PlayerViewController.xib */,
 				4E114CFF1A0A06A100D9AAB3 /* RosterViewController.swift */,
 				4EB721141A09F46900959133 /* Main.storyboard */,
 				4EB721171A09F46900959133 /* Images.xcassets */,
@@ -151,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EB721161A09F46900959133 /* Main.storyboard in Resources */,
+				4E5A0BDF1A0B51B30074F467 /* PlayerViewController.xib in Resources */,
 				4EB7211B1A09F46900959133 /* LaunchScreen.xib in Resources */,
 				4EB721181A09F46900959133 /* Images.xcassets in Resources */,
 			);
@@ -164,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EB721131A09F46900959133 /* ViewController.swift in Sources */,
+				4E5A0BDE1A0B51B30074F467 /* PlayerViewController.swift in Sources */,
 				4EB721111A09F46900959133 /* AppDelegate.swift in Sources */,
 				4E114D001A0A06A100D9AAB3 /* RosterViewController.swift in Sources */,
 			);
@@ -272,10 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Source/github/NHLKit/NHLKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,10 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Source/github/NHLKit/NHLKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

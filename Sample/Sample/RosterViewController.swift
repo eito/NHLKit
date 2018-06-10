@@ -15,6 +15,7 @@ class RosterViewContorller: UITableViewController {
     // MARK: Properties
     private var roster: Roster?
     private let team: Team!
+    private var currentRequest: Request?
     
     // MARK: Initializers
     
@@ -27,6 +28,11 @@ class RosterViewContorller: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        println("cancelling")
+        currentRequest?.cancel()
+    }
+    
     // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +41,13 @@ class RosterViewContorller: UITableViewController {
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ROSTER")
         
-        NHLRequestManager.fetchRoster(team) { (roster, error) in
+        currentRequest = NHLRequestManager.fetchRoster(team) { [weak self] (roster, error) in
             
             if let error = error {
                 println("error: \(error)")
             } else if let roster = roster {
-                println("roster: \(roster)")
-                println("roster: \(roster)")                
-                self.roster = roster
-                self.tableView.reloadData()
+                self?.roster = roster
+                self?.tableView.reloadData()
             }
         }
     }
@@ -79,17 +83,17 @@ class RosterViewContorller: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ROSTER", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("ROSTER", forIndexPath: indexPath) as! UITableViewCell
         
         if indexPath.section == 0 {
             let goalie = roster!.goalies[indexPath.row]
-            cell.textLabel.text = goalie.displayString()
+            cell.textLabel?.text = goalie.displayString()
         } else if indexPath.section == 1 {
             let defenseman = roster!.defensemen[indexPath.row]
-            cell.textLabel.text = defenseman.displayString()
+            cell.textLabel?.text = defenseman.displayString()
         } else {
             let forward = roster!.forwards[indexPath.row]
-            cell.textLabel.text = forward.displayString()
+            cell.textLabel?.text = forward.displayString()
         }
         return cell
     }

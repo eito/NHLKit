@@ -13,27 +13,30 @@ public class NHLRequestManager {
     
     public class func fetchStats(forRoster roster: Roster, completion: ((error: NSError?) -> Void)?) -> Request? {
         let requestURLString = String(format: TeamPlayerStatsURLString, 2014, 2015)
+        var request: JSONRequest?
         if let URL = NSURL(string: requestURLString) {
-            var request = JSONRequest(URL: URL)
-            request.completion = { (result, error) in
+            request = JSONRequest(URL: URL)
+            request!.completion = { (result, error) in
                 
                 if let result = result as? [String:AnyObject] {
                     roster.decodeStatJSON(result)
                 }
-
-                completion?(error: error)
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion?(error: error)
+                    return
+                }
             }
-            request.start()
-            return request
+            request!.start()
         }
-        return nil
+        return request
     }
     
     public class func fetchRoster(team: Team, completion: ((roster: Roster?, error: NSError?) -> Void)?) -> Request? {
         let requestURLString = String(format: RosterTemplateURLString, team.abbreviation)
+        var request: JSONRequest? = nil
         if let URL = NSURL(string: requestURLString) {
-            var request = JSONRequest(URL: URL)
-            request.completion = { (result, error) in
+            request = JSONRequest(URL: URL)
+            request!.completion = { (result, error) in
                 
                 var processError: NSError?
                 var processResult: Roster?
@@ -45,11 +48,13 @@ public class NHLRequestManager {
                         processResult?.team = team
                     }
                 }
-                completion?(roster: processResult, error: processError)
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion?(roster: processResult, error: processError)
+                    return
+                }
             }
-            request.start()
-            return request
+            request!.start()
         }
-        return nil
+        return request
     }
 }
