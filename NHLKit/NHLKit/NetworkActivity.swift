@@ -14,26 +14,25 @@ private var NetworkActivityCount = 0
 
 /// This queue will handle all requests to increment/decrement activity count
 /// thus ensuring concurrency will be handled correctly
-private let serialQueue = dispatch_queue_create("com.ericito.scoreboard.activity.queue", DISPATCH_QUEUE_SERIAL);
-
+private let serialQueue = DispatchQueue(label: "com.ericito.nhlkit.networkactivity.queue")
 
 public class NetworkActivity {
     
     public class func start() {
-        dispatch_async(serialQueue) {
-            NetworkActivityCount++
+        serialQueue.async {
+            NetworkActivityCount += 1
             NetworkActivity.updateNetworkStatus()
         }
     }
     
     public class func stop() {
-        dispatch_async(serialQueue) {
-            NetworkActivityCount--
+        serialQueue.async {
+            NetworkActivityCount -= 1
             NetworkActivity.updateNetworkStatus()
         }
     }
     
     private class func updateNetworkStatus() {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = (NetworkActivityCount > 0)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = (NetworkActivityCount > 0)
     }
 }

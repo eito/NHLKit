@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E114CED1A09F61C00D9AAB3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB720C61A09E73B00959133 /* Request.swift */; };
-		4E114CEE1A09F62800D9AAB3 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB720C71A09E73B00959133 /* RequestManager.swift */; };
 		4E114CF21A09F73D00D9AAB3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114CF11A09F73D00D9AAB3 /* Constants.swift */; };
 		4E114CF41A09FA1500D9AAB3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114CF31A09FA1500D9AAB3 /* Player.swift */; };
 		4E114CF61A09FA1E00D9AAB3 /* Skater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114CF51A09FA1E00D9AAB3 /* Skater.swift */; };
@@ -17,6 +15,7 @@
 		4E114CFC1A09FC9900D9AAB3 /* NHLRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114CFB1A09FC9900D9AAB3 /* NHLRequestManager.swift */; };
 		4E114CFE1A09FDFB00D9AAB3 /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114CFD1A09FDFB00D9AAB3 /* Roster.swift */; };
 		4E114D021A0A088100D9AAB3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E114D011A0A088100D9AAB3 /* Team.swift */; };
+		4E91FB5620CDA86B00673ABB /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E91FB5520CDA86B00673ABB /* Just.swift */; };
 		4EB720C81A09E73B00959133 /* NetworkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB720C51A09E73B00959133 /* NetworkActivity.swift */; };
 		4EB721011A09F3FD00959133 /* NHLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB720AE1A09E6BF00959133 /* NHLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -30,6 +29,7 @@
 		4E114CFB1A09FC9900D9AAB3 /* NHLRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHLRequestManager.swift; sourceTree = "<group>"; };
 		4E114CFD1A09FDFB00D9AAB3 /* Roster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
 		4E114D011A0A088100D9AAB3 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		4E91FB5520CDA86B00673ABB /* Just.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 		4EB720A91A09E6BF00959133 /* NHLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NHLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB720AD1A09E6BF00959133 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EB720AE1A09E6BF00959133 /* NHLKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHLKit.h; sourceTree = "<group>"; };
@@ -49,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E91FB5420CDA85B00673ABB /* JUST */ = {
+			isa = PBXGroup;
+			children = (
+				4E91FB5520CDA86B00673ABB /* Just.swift */,
+			);
+			name = JUST;
+			sourceTree = "<group>";
+		};
 		4EB7209F1A09E6BF00959133 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +102,7 @@
 		4EB720CB1A09E74900959133 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4E91FB5420CDA85B00673ABB /* JUST */,
 				4EB720C51A09E73B00959133 /* NetworkActivity.swift */,
 				4EB720C61A09E73B00959133 /* Request.swift */,
 				4EB720C71A09E73B00959133 /* RequestManager.swift */,
@@ -179,12 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E114CEE1A09F62800D9AAB3 /* RequestManager.swift in Sources */,
 				4E114CFA1A09FC4C00D9AAB3 /* JSONCoding.swift in Sources */,
 				4E114CFE1A09FDFB00D9AAB3 /* Roster.swift in Sources */,
+				4E91FB5620CDA86B00673ABB /* Just.swift in Sources */,
 				4EB720C81A09E73B00959133 /* NetworkActivity.swift in Sources */,
 				4E114CFC1A09FC9900D9AAB3 /* NHLRequestManager.swift in Sources */,
-				4E114CED1A09F61C00D9AAB3 /* Request.swift in Sources */,
 				4E114CF41A09FA1500D9AAB3 /* Player.swift in Sources */,
 				4E114CF21A09F73D00D9AAB3 /* Constants.swift in Sources */,
 				4E114D021A0A088100D9AAB3 /* Team.swift in Sources */,
@@ -295,6 +303,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -311,6 +320,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

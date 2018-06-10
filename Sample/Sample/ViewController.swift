@@ -19,11 +19,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         navigationItem.title = "Teams"
         
-        tableView = UITableView(frame: view.bounds, style: .Plain)
-        tableView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        NHLRequestManager.fetchTeams { (teams, error) in
+            
+            guard error == nil else {
+                print("Error fetching teams")
+                return
+            }
+            
+            print(teams!)
+        }
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CONTENT")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CONTENT")
         view.addSubview(tableView)
     }
 
@@ -38,28 +47,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CONTENT", forIndexPath: indexPath) as! UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        return UITableViewCell()
         
-        let teamAbbrev = NHLTeams[indexPath.row]
-        let team: Team! = NHLTeamMap[teamAbbrev]
-        cell.textLabel?.text = team.name
-        cell.accessoryType = .DisclosureIndicator
-        return cell
+//        var cell = tableView.d("CONTENT", forIndexPath: indexPath) as! UITableViewCell
+//
+//        let teamAbbrev = NHLTeams[indexPath.row]
+//        let team: Team! = NHLTeamMap[teamAbbrev]
+//        cell.textLabel?.text = team.name
+//        cell.accessoryType = .DisclosureIndicator
+//        return cell
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return NHLTeams.count
     }
     
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let team = NHLTeams[indexPath.row]
-        let rvc = RosterViewContorller(team: NHLTeamMap[team]!)
-        navigationController?.pushViewController(rvc, animated: true)
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+//        let team = NHLTeams[indexPath.row]
+//        let rvc = RosterViewContorller(team: NHLTeamMap[team]!)
+//        navigationController?.pushViewController(rvc, animated: true)
     }
 }
 

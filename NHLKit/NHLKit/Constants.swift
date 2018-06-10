@@ -16,6 +16,49 @@ import Foundation
 20142015
 */
 
+// https://statsapi.web.nhl.com/api/v1/teams/
+//
+enum Teams: Int {
+    case njd = 1
+    case nyi = 2
+    case nyr = 3
+    case phl = 4
+    case pit = 5
+    case bos = 6
+    case buf = 7
+    case mtl = 8
+    case ott = 9
+    case tor = 10
+    case car = 12
+    case fla = 13
+    case tbl = 14
+    case wsh = 15
+    case chi = 16
+    case det = 17
+    case nsh = 18
+    case stl = 19
+    case cgy = 20
+    case col = 21
+    case edm = 22
+    case van = 23
+    case ana = 24
+    case dal = 25
+    case lak = 26
+    case sjs = 28
+    case cbj = 29
+    case min = 30
+    case wpg = 52
+    case ari = 53
+    case vgk = 54
+    
+    var rosterUrl: String {
+        return "https://statsapi.web.nhl.com/api/v1/teams/\(rawValue)/roster"
+    }
+    
+    var statusUrl: String {
+        return "https://statsapi.web.nhl.com/api/v1/teams/\(rawValue)/stats"
+    }
+}
 
 // http://nhlwc.cdnak.neulion.com/fs1/nhl/league/teamroster/ANA/iphone/clubroster.json
 let RosterTemplateURLString = "http://nhlwc.cdnak.neulion.com/fs1/nhl/league/teamroster/%@/iphone/clubroster.json"
@@ -101,35 +144,35 @@ public let NHLTeams = [
     "WPG",
 ]
 
-public let NHLTeamMap = [
-    "ANA" : Team(abbreviation: "ANA", name: "Anaheim Ducks"),
-    "ARI" : Team(abbreviation: "ARI", name: "Arizona Coyotes"),
-    "BOS" : Team(abbreviation: "BOS", name: "Boston Bruins"),
-    "BUF" : Team(abbreviation: "BUF", name: "Buffalo Sabres"),
-    "CGY" : Team(abbreviation: "CGY", name: "Calgary Flames"),
-    "CAR" : Team(abbreviation: "CAR", name: "Carolina Hurricanes"),
-    "CHI" : Team(abbreviation: "CHI", name: "Chicago Blackhawks"),
-    "COL" : Team(abbreviation: "COL", name: "Colorado Avalance"),
-    "CBJ" : Team(abbreviation: "CBJ", name: "Columbus Blue Jackets"),
-    "DAL" : Team(abbreviation: "DAL", name: "Dallas Stars"),
-    "DET" : Team(abbreviation: "DET", name: "Detroit Red Wings"),
-    "EDM" : Team(abbreviation: "EDM", name: "Edmonton Oilers"),
-    "FLA" : Team(abbreviation: "FLA", name: "Florida Panthers"),
-    "LAK" : Team(abbreviation: "LAK", name: "Los Angeles Kings"),
-    "MIN" : Team(abbreviation: "MIN", name: "Minnesota Wild"),
-    "MTL" : Team(abbreviation: "MTL", name: "Montreal Canadiens"),
-    "NSH" : Team(abbreviation: "NSH", name: "Nashville Predators"),
-    "NJD" : Team(abbreviation: "NJD", name: "New Jersey Devils"),
-    "NYI" : Team(abbreviation: "NYI", name: "New York Islanders"),
-    "NYR" : Team(abbreviation: "NYR", name: "New York Rangers"),
-    "OTT" : Team(abbreviation: "OTT", name: "Ottawa Senators"),
-    "PHI" : Team(abbreviation: "PHI", name: "Philadelphia Flyers"),
-    "PIT" : Team(abbreviation: "PIT", name: "Pittsburgh Penguins"),
-    "SJS" : Team(abbreviation: "SJS", name: "San Jose Sharks"),
-    "STL" : Team(abbreviation: "STL", name: "St. Louis Blues"),
-    "TBL" : Team(abbreviation: "TBL", name: "Tampa Bay Lightning"),
-    "TOR" : Team(abbreviation: "TOR", name: "Toronto Maple Leafs"),
-    "VAN" : Team(abbreviation: "VAN", name: "Vancouver Canucks"),
-    "WSH" : Team(abbreviation: "WSH", name: "Washington Capitals"),
-    "WPG" : Team(abbreviation: "WPG", name: "Winnipeg Jets")
-]
+//public let NHLTeamMap = [
+//    "ANA" : Team(abbreviation: "ANA", name: "Anaheim Ducks"),
+//    "ARI" : Team(abbreviation: "ARI", name: "Arizona Coyotes"),
+//    "BOS" : Team(abbreviation: "BOS", name: "Boston Bruins"),
+//    "BUF" : Team(abbreviation: "BUF", name: "Buffalo Sabres"),
+//    "CGY" : Team(abbreviation: "CGY", name: "Calgary Flames"),
+//    "CAR" : Team(abbreviation: "CAR", name: "Carolina Hurricanes"),
+//    "CHI" : Team(abbreviation: "CHI", name: "Chicago Blackhawks"),
+//    "COL" : Team(abbreviation: "COL", name: "Colorado Avalance"),
+//    "CBJ" : Team(abbreviation: "CBJ", name: "Columbus Blue Jackets"),
+//    "DAL" : Team(abbreviation: "DAL", name: "Dallas Stars"),
+//    "DET" : Team(abbreviation: "DET", name: "Detroit Red Wings"),
+//    "EDM" : Team(abbreviation: "EDM", name: "Edmonton Oilers"),
+//    "FLA" : Team(abbreviation: "FLA", name: "Florida Panthers"),
+//    "LAK" : Team(abbreviation: "LAK", name: "Los Angeles Kings"),
+//    "MIN" : Team(abbreviation: "MIN", name: "Minnesota Wild"),
+//    "MTL" : Team(abbreviation: "MTL", name: "Montreal Canadiens"),
+//    "NSH" : Team(abbreviation: "NSH", name: "Nashville Predators"),
+//    "NJD" : Team(abbreviation: "NJD", name: "New Jersey Devils"),
+//    "NYI" : Team(abbreviation: "NYI", name: "New York Islanders"),
+//    "NYR" : Team(abbreviation: "NYR", name: "New York Rangers"),
+//    "OTT" : Team(abbreviation: "OTT", name: "Ottawa Senators"),
+//    "PHI" : Team(abbreviation: "PHI", name: "Philadelphia Flyers"),
+//    "PIT" : Team(abbreviation: "PIT", name: "Pittsburgh Penguins"),
+//    "SJS" : Team(abbreviation: "SJS", name: "San Jose Sharks"),
+//    "STL" : Team(abbreviation: "STL", name: "St. Louis Blues"),
+//    "TBL" : Team(abbreviation: "TBL", name: "Tampa Bay Lightning"),
+//    "TOR" : Team(abbreviation: "TOR", name: "Toronto Maple Leafs"),
+//    "VAN" : Team(abbreviation: "VAN", name: "Vancouver Canucks"),
+//    "WSH" : Team(abbreviation: "WSH", name: "Washington Capitals"),
+//    "WPG" : Team(abbreviation: "WPG", name: "Winnipeg Jets")
+//]

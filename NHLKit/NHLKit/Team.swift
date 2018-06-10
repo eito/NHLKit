@@ -8,13 +8,22 @@
 
 import Foundation
 
-public class Team {
+public struct Team: Codable {
+
+    public let name: String
+    public let abbreviation: String
+    public let teamName: String
+    public let locationName: String
+    public let shortName: String
+    private let id: Int
     
-    public let name: String!
-    public let abbreviation: String!
-    
-    public init(abbreviation a: String, name n: String) {
-        name = n
-        abbreviation = a
+    enum CodingKeys:String,CodingKey
+    {
+        case name
+        case abbreviation
+        case teamName
+        case locationName
+        case shortName
+        case id
     }
 }

@@ -8,11 +8,11 @@
 
 import Foundation
 
-
-public class Goalie: Player {
-    // "#, POS, NAME, GP, W, L, OT, GA, SA, SV, SV%, GAA, SO, PIM, MIN"
-    
-    override public func decodeStatString(stats: String) {
-        
-    }
-}
+//
+//public class Goalie: Player {
+//    // "#, POS, NAME, GP, W, L, OT, GA, SA, SV, SV%, GAA, SO, PIM, MIN"
+//    
+//    override public func decodeStatString(stats: String) {
+//        
+//    }
+//}
